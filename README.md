@@ -1,96 +1,61 @@
-# @premium-ads/adapter-v2
+# @premiumads/react-native-admob-adapter
 
-PremiumAds Google AdMob Adapter V2 — React Native plugin for mediation through PremiumAds.
+PremiumAds mediation adapter for [react-native-google-mobile-ads](https://github.com/invertase/react-native-google-mobile-ads).
 
-Supports Android and iOS via the community [react-native-google-mobile-ads](https://github.com/invertase/react-native-google-mobile-ads) plugin.
-
-## Supported Ad Formats
-
-- Banner
-- Interstitial
-- Rewarded
-- Rewarded Interstitial
-- Native
-- App Open
+Wires the PremiumAds AdMob custom-event adapter into your React Native app's Android and iOS builds so that Google Mobile Ads mediation can fill inventory from the PremiumAds network.
 
 ## Installation
 
-```sh
-npm install @premium-ads/adapter-v2 react-native-google-mobile-ads
-# or
-yarn add @premium-ads/adapter-v2 react-native-google-mobile-ads
+```bash
+npm install @premiumads/react-native-admob-adapter react-native-google-mobile-ads
 ```
 
 ### iOS
 
-```sh
+Nothing extra to configure. `PremiumAdsGoogleAdapter` is published on CocoaPods trunk and is pulled in transitively by the wrapper podspec:
+
+```bash
 cd ios && pod install
 ```
 
 ### Android
 
-Add the PremiumAds Maven repository to `android/build.gradle`:
-
-```groovy
-allprojects {
-    repositories {
-        maven { url 'https://repo.premiumads.net/artifactory/mobile-ads-sdk/' }
-    }
-}
-```
-
-The native adapter AAR is auto-resolved.
-
-## Configure AdMob Custom Event
-
-In the [AdMob console](https://apps.admob.com), configure a **Custom Event** for each ad unit:
-
-| Platform | Field | Value |
-|----------|-------|-------|
-| **Android** | Class Name | `net.premiumads.sdk.adapter.PremiumAdsAdapter` |
-| **iOS** | Class Name | `PremiumAdsAdapter` |
-| Both | Parameter | Your PremiumAds ad unit ID |
-
-The same class works for all 6 ad formats.
+Nothing extra to configure. The wrapper's `build.gradle` already adds the PremiumAds JFrog Maven repository (`https://repo.premiumads.net/artifactory/mobile-ads-sdk/`) and pulls in `net.premiumads.sdk:admob-adapter-v2` via autolinking.
 
 ## Usage
 
-The adapter is invoked automatically by Google Mobile Ads SDK — **no extra code needed**. Use the standard `react-native-google-mobile-ads` API:
+```ts
+import mobileAds from 'react-native-google-mobile-ads';
+import {setDebug} from '@premiumads/react-native-admob-adapter';
 
-```tsx
-import mobileAds, {
-  InterstitialAd,
-  AdEventType,
-} from 'react-native-google-mobile-ads';
-import PremiumAdsV2 from '@premium-ads/adapter-v2';
+// Enable verbose logging from the PremiumAds adapter (dev only)
+setDebug(__DEV__);
 
-// Optional: enable debug logging
-await PremiumAdsV2.setDebug(true);
-
-// Initialize
-await mobileAds().initialize();
-
-// Load an interstitial
-const ad = InterstitialAd.createForAdRequest('ca-app-pub-xxxxx/xxxxx');
-ad.addAdEventListener(AdEventType.LOADED, () => ad.show());
-ad.load();
+mobileAds().initialize().then(statuses => {
+  console.log('Adapters:', statuses);
+});
 ```
 
-## Example
+Once initialized, use the standard `react-native-google-mobile-ads` APIs (`BannerAd`, `InterstitialAd`, `RewardedAd`, `AppOpenAd`, etc.). The PremiumAds adapter will receive ad requests via AdMob mediation when your ad units are configured to mediate through PremiumAds in the AdMob console.
 
-A complete example app with 5 ad formats is in [`example/`](example/).
+See the [`example/`](https://github.com/premium-ads/googleads-adapter-v2-react-native/tree/main/example) folder for a full working example app.
 
-## Documentation
+## Supported ad formats
 
-- [Integration Guide](https://docs.premiumads.net/v2.0/docs/google-admob)
-- [Test Ad Units](https://docs.premiumads.net/v2.0/docs/enabling-test-ads)
+- Banner
+- Interstitial
+- Rewarded
+- Rewarded Interstitial
+- App Open
+- Native (via `react-native-google-mobile-ads` native ad support)
 
-## Native Dependencies
+## Versioning
 
-This plugin pulls native binaries automatically:
-- **Android:** `net.premiumads.sdk:admob-adapter-v2` from PremiumAds JFrog Maven
-- **iOS:** `PremiumAdsGoogleAdapter` pod from CocoaPods (requires Google Mobile Ads SDK 13.0+)
+This JS package is versioned independently from the native adapters. It pins:
 
-## Support
+- Android: `net.premiumads.sdk:admob-adapter-v2:1.0.8`
+- iOS: `PremiumAdsGoogleAdapter` (1.0.6)
 
-Contact your PremiumAds account manager or email support@premiumads.net
+## License
+
+MIT © PremiumAds

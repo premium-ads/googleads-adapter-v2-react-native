@@ -1,57 +1,43 @@
 {
-  "name": "@premium-ads/adapter-v2",
-  "version": "1.0.0",
-  "description": "PremiumAds Google AdMob Adapter V2 — React Native plugin for mediation through PremiumAds.",
-  "main": "lib/commonjs/index.js",
-  "module": "lib/module/index.js",
-  "types": "lib/typescript/src/index.d.ts",
-  "react-native": "src/index.tsx",
-  "source": "src/index.tsx",
+  "name": "@premiumads/react-native-admob-adapter",
+  "version": "1.0.1",
+  "description": "PremiumAds AdMob mediation adapter for React Native (react-native-google-mobile-ads).",
+  "main": "src/index.tsx",
+  "types": "src/index.tsx",
   "files": [
     "src",
-    "lib",
-    "android",
+    "android/build.gradle",
+    "android/src",
     "ios",
-    "*.podspec",
+    "PremiumAdsReactNativeAdmobAdapter.podspec",
+    "react-native.config.js",
     "README.md",
     "LICENSE"
   ],
-  "scripts": {
-    "prepack": "bob build"
-  },
   "keywords": [
     "react-native",
-    "ios",
-    "android",
     "admob",
-    "ads",
+    "premiumads",
     "mediation",
-    "premiumads"
+    "ads",
+    "google-mobile-ads"
   ],
-  "repository": "https://github.com/premium-ads/googleads-adapter-v2-react-native",
-  "author": "PremiumAds <alex@premiumads.net>",
-  "license": "SEE LICENSE IN LICENSE",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/premium-ads/googleads-adapter-v2-react-native.git"
+  },
+  "author": "alexgmax <alex@premiumads.net>",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/premium-ads/googleads-adapter-v2-react-native/issues"
   },
   "homepage": "https://github.com/premium-ads/googleads-adapter-v2-react-native#readme",
-  "devDependencies": {
-    "react": "18.2.0",
-    "react-native": "0.74.0",
-    "react-native-builder-bob": "^0.23.0",
-    "typescript": "^5.0.0"
-  },
   "peerDependencies": {
     "react": "*",
-    "react-native": "*"
+    "react-native": ">=0.71.0",
+    "react-native-google-mobile-ads": ">=13.0.0"
   },
-  "react-native-builder-bob": {
-    "source": "src",
-    "output": "lib",
-    "targets": [
-      "commonjs",
-      "module",
-      ["typescript", { "project": "tsconfig.build.json" }]
-    ]
+  "publishConfig": {
+    "access": "public"
   }
 }
