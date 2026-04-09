@@ -1,0 +1,57 @@
+{
+  "name": "@premium-ads/adapter-v2",
+  "version": "1.0.0",
+  "description": "PremiumAds Google AdMob Adapter V2 — React Native plugin for mediation through PremiumAds.",
+  "main": "lib/commonjs/index.js",
+  "module": "lib/module/index.js",
+  "types": "lib/typescript/src/index.d.ts",
+  "react-native": "src/index.tsx",
+  "source": "src/index.tsx",
+  "files": [
+    "src",
+    "lib",
+    "android",
+    "ios",
+    "*.podspec",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "prepack": "bob build"
+  },
+  "keywords": [
+    "react-native",
+    "ios",
+    "android",
+    "admob",
+    "ads",
+    "mediation",
+    "premiumads"
+  ],
+  "repository": "https://github.com/premium-ads/googleads-adapter-v2-react-native",
+  "author": "PremiumAds <alex@premiumads.net>",
+  "license": "SEE LICENSE IN LICENSE",
+  "bugs": {
+    "url": "https://github.com/premium-ads/googleads-adapter-v2-react-native/issues"
+  },
+  "homepage": "https://github.com/premium-ads/googleads-adapter-v2-react-native#readme",
+  "devDependencies": {
+    "react": "18.2.0",
+    "react-native": "0.74.0",
+    "react-native-builder-bob": "^0.23.0",
+    "typescript": "^5.0.0"
+  },
+  "peerDependencies": {
+    "react": "*",
+    "react-native": "*"
+  },
+  "react-native-builder-bob": {
+    "source": "src",
+    "output": "lib",
+    "targets": [
+      "commonjs",
+      "module",
+      ["typescript", { "project": "tsconfig.build.json" }]
+    ]
+  }
+}

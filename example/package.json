@@ -1,0 +1,24 @@
+{
+  "name": "premium-ads-adapter-v2-example",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "android": "react-native run-android",
+    "ios": "react-native run-ios",
+    "start": "react-native start"
+  },
+  "dependencies": {
+    "@premium-ads/adapter-v2": "file:..",
+    "react": "18.2.0",
+    "react-native": "0.74.0",
+    "react-native-google-mobile-ads": "^14.0.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.20.0",
+    "@babel/preset-env": "^7.20.0",
+    "@babel/runtime": "^7.20.0",
+    "@react-native/babel-preset": "0.74.0",
+    "@react-native/metro-config": "0.74.0",
+    "typescript": "^5.0.0"
+  }
+}
