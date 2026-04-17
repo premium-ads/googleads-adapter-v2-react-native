@@ -1,6 +1,6 @@
 {
   "name": "@premiumads/react-native-admob-adapter",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "PremiumAds AdMob mediation adapter for React Native (react-native-google-mobile-ads).",
   "main": "src/index.tsx",
   "types": "src/index.tsx",

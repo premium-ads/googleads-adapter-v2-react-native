@@ -53,7 +53,7 @@ See the [`example/`](https://github.com/premium-ads/googleads-adapter-v2-react-n
 
 This JS package is versioned independently from the native adapters. It pins:
 
-- Android: `net.premiumads.sdk:admob-adapter-v2:1.0.8`
+- Android: `net.premiumads.sdk:admob-adapter-v2:1.0.9`
 - iOS: `PremiumAdsGoogleAdapter` (1.0.6)
 
 ## License

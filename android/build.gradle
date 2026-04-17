@@ -43,5 +43,5 @@ repositories {
 
 dependencies {
   implementation 'com.facebook.react:react-android'
-  api 'net.premiumads.sdk:admob-adapter-v2:1.0.8'
+  api 'net.premiumads.sdk:admob-adapter-v2:1.0.9'
 }
